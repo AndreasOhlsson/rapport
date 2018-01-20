@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  dateOfEvent: 2018-01-20 16:48:00
+  message: MyString
+  generatedId: MyString
+
+two:
+  title: MyString
+  dateOfEvent: 2018-01-20 16:48:00
+  message: MyString
+  generatedId: MyString
