@@ -26,7 +26,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'jquery-rails'
-gem 'pg'
+gem 'pg', '~> 0.18'
 group :development do
   gem 'better_errors'
   gem 'rails_layout'
