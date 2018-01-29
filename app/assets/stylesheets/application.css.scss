@@ -13,4 +13,127 @@
  *= require_tree .
  *= require_self
  *= require rails_bootstrap_forms 
+ *= require bootstrap-datepicker
  */
+
+
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+strong, b {
+  font-weight: bold;
+}
+em, i {
+  font-style: italic;
+}
+a img {
+  border: none;
+}
+/* END RESET*/
+
+/* GLOBAL STYLES */
+html {
+  /*box-shadow: 0 0 0 30px #000 inset;
+  padding: 0 30px;*/
+}
+body {
+  font-family: 'minion-pro', helvetica, arial, sans;
+  min-height: 100vh;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'bebas-neue', helvetica, sans;
+  font-weight: 100;
+}
+
+.content-container {
+  display: flex;
+  flex: 1 1 auto;
+  padding-top: 10vh;
+  width: 100%;
+}
+
+
+h1 {
+  font-size: 3vw;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.5;
+  margin: 0.75em 0;
+
+}
+h2 {
+  font-size: 2em;
+}
+h2 ~ p {
+  font-size: 0.8em;
+  font-style: italic;
+  margin: 1em auto 0;
+  max-width: 70%;
+  text-align: center;
+}
+
+h4 {
+  color: #999;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+a:hover {
+  text-decoration: none;
+  color: #EC6A41 !important;
+}
+
+/*flash*/
+.alert-error {
+	background-color: #f2dede;
+	border-color: #eed3d7;
+	color: #b94a48;
+	text-align: left;
+}
+
+.alert-alert {
+	background-color: #f2dede;
+	border-color: #eed3d7;
+	color: #b94a48;
+	text-align: left;
+}
+
+.alert-success {
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	color: #468847;
+	text-align: left;
+}
+
+.alert-notice {
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	color: #468847;
+	text-align: left;
+}
+
+.flash-messages {
+  font-size: 1.5em;
+}
