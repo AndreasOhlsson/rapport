@@ -73,8 +73,8 @@ class TicketsController < ApplicationController
     if params[:token].present? && Ticket.where(token: params[:token]).present?
       redirect_to ticket_path(params[:token])
     else
-      flash.now[:danger] = 'Invalid id!'
-      render 'home'
+      flash.now[:danger] = 'En ticket med ett sådant id existerar ej'
+      render 'visitors/index'
     end
   end
 

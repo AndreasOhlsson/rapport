@@ -1,28 +1,28 @@
 
 <div class="ticket-container">
   <p id="notice"><%= notice %></p>
-
-  <h1>
-    <strong><%= @ticket.title %></strong>
-  </h1>
-
-  <p>
-    <strong>Datum:</strong>
-    <%= @ticket.dateOfEvent.strftime('%Y-%m-%d') %>
-  </p>
-
-  <p>
-    <strong>Token:</strong>
-    <%= @ticket.token %>
-  </p>
-
-  <p>
-    <strong>Meddelande:</strong>
-  </p>
-  <p><%= @ticket.message %></p>
-
-
-
+  <h1><%= @ticket.title %></h1>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <p>
+        <strong>Datum:</strong>
+        <%= @ticket.dateOfEvent.strftime('%Y-%m-%d') %>
+      </p>
+    </li>
+    <li class="list-group-item">
+      <p>
+        <strong>Token:</strong>
+        <%= @ticket.token %>
+      </p>
+    </li>
+    <li class="list-group-item"> 
+      <p>
+        <strong>Beskrivning:</strong>
+        <%= @ticket.message %>
+      </p>
+    </li>
+  </ul>
+  
   <%#= link_to 'Edit', edit_ticket_path(@ticket) %> 
   <% if user_signed_in? %>
     <%= link_to 'Tillbaka', tickets_path %>

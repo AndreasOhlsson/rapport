@@ -37,7 +37,6 @@ img {
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
-  @extend .container;
   background-color: #fff;
   padding-bottom: 80px;
   width: 100%;
