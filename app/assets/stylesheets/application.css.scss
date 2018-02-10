@@ -96,6 +96,25 @@ a:hover {
   color: #EC6A41 !important;
 }
 
+@media (min-width: 768px) {
+  .lead {
+    width: 70%;
+    margin: auto;
+  } 
+}
+
+.check-ticket {
+  display: none;
+}
+
+.check-hover {
+  cursor: pointer;
+}
+
+.check-hover:hover {
+  color: #EC6A41 !important;
+}
+
 /*flash*/
 .alert-error {
 	background-color: #f2dede;

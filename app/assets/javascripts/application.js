@@ -28,5 +28,9 @@ $(document).on('turbolinks:load', function() {
     language: 'sv',
   });
 
-});
+  $(".check-hover").click( function() {
+    $("#check-ticket").fadeToggle('fast');
+    $("#token").focus();
+  });
 
+});
