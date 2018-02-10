@@ -9,7 +9,7 @@
         <th>Title</th>
         <th>Dateofevent</th>
         <th>Message</th>
-        <th>Generatedid</th>
+        <th>Token</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -20,8 +20,8 @@
           <td><%= ticket.title %></td>
           <td><%= ticket.dateOfEvent.strftime('%Y-%m-%d') %></td>
           <td><%= ticket.message %></td>
-          <td><%= ticket.generatedId %></td>
-          <td><%= link_to 'Show', ticket %></td>
+          <td><%= ticket.token %></td>
+          <td><%= link_to 'Show', ticket.token %></td>
           <td><%#= link_to 'Edit', edit_ticket_path(ticket) %></td>
           <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

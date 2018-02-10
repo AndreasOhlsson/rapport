@@ -23,6 +23,9 @@ $(document).on('turbolinks:load', function() {
   $('.datepicker').datepicker({
     format: "yyyy-mm-dd",
     autoclose: true,
+    weekStart: 1,
+    zIndexOffset: 20,
+    language: 'sv',
   });
 
 });
