@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+ 
 
   # GET /tickets
   # GET /tickets.json
@@ -27,7 +28,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      flash[:info] = "Ticket skapad"
+      flash[:info] = "Ticket skapad med id: " + @ticket.token
       redirect_to root_path
     else 
       render 'new'
@@ -65,6 +66,15 @@ class TicketsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def search
+    if params[:token].present? && Ticket.where(token: params[:token]).present?
+      redirect_to ticket_path(params[:token])
+    else
+      flash.now[:danger] = 'Invalid id!'
+      render 'home'
     end
   end
 
