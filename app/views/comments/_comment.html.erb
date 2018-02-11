@@ -1,0 +1,18 @@
+<% if !comment.content.nil? %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p><%= comment.content %></p>
+      <% if comment.user_id != nil %>
+        <span style="color: #EC6A41"> <em>Skickat av Quratelet</em></span>
+      <% else %>
+
+      <em>Skickat av anonym</em>
+      <% end %>
+      <% if !comment.created_at.nil? %>
+        <em>för <%= time_ago_in_words(comment.try(:created_at), locale: 'sv') %> sedan.</em>
+      <% end %>
+    </div>
+  </div>
+  <br>
+<% end %>
+

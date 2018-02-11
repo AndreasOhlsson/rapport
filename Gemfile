@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
 end
 ruby '2.3.3'
 
+
+gem 'rails-i18n'
 gem 'uniquify', github: 'Openbay/uniquify'
 gem 'bootstrap-datepicker-rails'
 gem "bootstrap_form", "~> 2.7"

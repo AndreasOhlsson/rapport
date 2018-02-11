@@ -1,0 +1,6 @@
+<%= bootstrap_form_for(@comment) do |f| %>
+  <%= f.hidden_field :token, :value => @ticket.token %>
+  <%= f.hidden_field :user_id, :value => current_user.try(:id) %>
+  <%= f.text_area :content, required: true, label: 'Kommentar', placeholder: "Ny kommentar", rows: 5 %>
+  <%= f.submit "Skicka kommentar", class: "btn btn-primary" %>
+<% end %>
