@@ -15,10 +15,11 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
+//= require select2
 //= require_tree .
 
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function () {
 
   $('.datepicker').datepicker({
     format: "yyyy-mm-dd",
@@ -28,9 +29,14 @@ $(document).on('turbolinks:load', function() {
     language: 'sv',
   });
 
-  $(".check-hover").click( function() {
+  $(".check-hover").click(function () {
     $("#check-ticket").fadeToggle('fast');
     $("#token").focus();
+  });
+
+  $(".select2").select2({
+    theme: "bootstrap",
+    language: "sv"
   });
 
 });

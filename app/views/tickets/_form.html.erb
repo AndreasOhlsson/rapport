@@ -2,6 +2,8 @@
   <%= f.text_field :title, id: :ticket_title, label: 'Titel*', required: true %>
   <%= f.text_area :message, id: :ticket_message, style: "min-height: 100px", label: 'Beskrivning av händelsen*', required: true %>
   <%= f.text_field :dateOfEvent, id: :ticket_dateOfEvent, class: 'datepicker', label: 'Datum för händelsen*', required: true %>
+  <%= f.collection_select(:user_ids, User.all, :id, :name, {label: "Skicka till*", 
+                          selected: @ticket.users.map(&:id)}, class: "select2", multiple: true, required: true) %>
   <%= f.primary "Skicka"%>
 <% end %>
 

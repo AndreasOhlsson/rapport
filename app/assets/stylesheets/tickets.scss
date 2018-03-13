@@ -2,9 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@media (min-width: 800px) {
+@media (min-width: 767px) {
   .ticket-container {
     width: 80%;
     margin: auto;
   }
+}
+
+
+@media (max-width: 686px) {
+  .select2 {
+    width: 80% !important;  
+  }
+
 }

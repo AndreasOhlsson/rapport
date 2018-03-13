@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tickets, param: :token
-  devise_for :users#, skip: [:registrations]
+  devise_for :users, :controllers => { registrations: 'registrations' }
   as :user do
     get "/login" => "devise/sessions#new" # custom path to login/sign_in
   #  get "/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration

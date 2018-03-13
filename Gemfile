@@ -6,6 +6,8 @@ end
 ruby '2.3.3'
 
 
+gem 'select2-rails'
+gem 'unread'
 gem 'rails-i18n'
 gem 'uniquify', github: 'Openbay/uniquify'
 gem 'bootstrap-datepicker-rails'

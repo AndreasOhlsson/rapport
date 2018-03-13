@@ -4,4 +4,5 @@ class Ticket < ApplicationRecord
   validates :title, presence: true
   validates :dateOfEvent, presence: true
   validates :message, presence: true
+  has_and_belongs_to_many :users
 end
