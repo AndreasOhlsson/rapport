@@ -16,6 +16,8 @@ class TicketsController < ApplicationController
   def show
     @comments = @ticket.comments
     @comment = @ticket.comments.new
+
+    @ticket.mark_as_read! for: current_user if current_user.present?
   end
 
   # GET /tickets/new

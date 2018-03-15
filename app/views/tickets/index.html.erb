@@ -14,7 +14,7 @@
     <thead>
       <tr>
         <th>Titel</th>
-        <th>Datum</th>
+        <th>Skickat in</th>
         <th>Beskrivning</th>
         <th>Token</th>
         <th>Läst?</th>
@@ -27,7 +27,7 @@
         <% if ticket.users.where(id: current_user).any?%>
           <tr>
             <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
-            <td><%= ticket.dateOfEvent.strftime('%Y-%m-%d') %></td>
+            <td><%= ticket.created_at.strftime('%Y-%m-%d') %></td>
             <% if ticket.message.length > 20 %>
               <td><%= ticket.message.first(20) + '...' %></td>
             <% else %>
@@ -52,7 +52,7 @@
     <thead>
       <tr>
         <th>Titel</th>
-        <th>Datum</th>
+        <th>Skickat in</th>
         <th>Beskrivning</th>
         <th>Token</th>
         <th>Delete</th>
@@ -64,7 +64,7 @@
         <% if ticket.users.where(id: current_user).any?%>
           <tr>
             <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
-            <td><%= ticket.dateOfEvent.strftime('%Y-%m-%d') %></td>
+            <td><%= ticket.created_at.strftime('%Y-%m-%d') %></td>
             <% if ticket.message.length > 20 %>
               <td><%= ticket.message.first(20) + '...' %></td>
             <% else %>
