@@ -1,7 +1,14 @@
+<% provide(:title, "Rapport | Tickets") %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Tickets</h1>
+<% if !current_user.try(:name).nil? %>
+  <h1>Tickets till <%= current_user.try(:name) %></h1>
+<% else %>
+  <h1>Tickets</h1>
+<% end %>
 
+<h2>Olästa Tickets</h2>
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
@@ -10,25 +17,65 @@
         <th>Datum</th>
         <th>Beskrivning</th>
         <th>Token</th>
-        <th colspan="3"></th>
+        <th>Läst?</th>
+        <th>Delete</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @tickets.each do |ticket| %>
-        <tr>
-          <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
-          <td><%= ticket.dateOfEvent.strftime('%Y-%m-%d') %></td>
-          <% if ticket.message.length > 20 %>
-            <td><%= ticket.message.first(20) + '...' %></td>
-          <% else %>
-            <td><%= ticket.message %></td>
-          <% end %>
-          <td><%= ticket.token %></td>
-          <td><%#= link_to 'Show', 'tickets/' + ticket.token %></td>
-          <td><%#= link_to 'Edit', edit_ticket_path(ticket) %></td>
-          <td><%= link_to 'Delete', ticket, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-        </tr>
+      <% @unread.each do |ticket| %>
+        <% if ticket.users.where(id: current_user).any?%>
+          <tr>
+            <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
+            <td><%= ticket.dateOfEvent.strftime('%Y-%m-%d') %></td>
+            <% if ticket.message.length > 20 %>
+              <td><%= ticket.message.first(20) + '...' %></td>
+            <% else %>
+              <td><%= ticket.message %></td>
+            <% end %>
+            <td><%= ticket.token %></td>
+            <td>
+              <a class="btn btn-primary btn-xs" data-remote="true" href="<%= mark_as_read_path(ticket.token) %>"><span href="<%= mark_as_read_path(ticket.token) %>" class="mark-read glyphicon glyphicon-ok" data-remote="true"></span></a>
+            </td>
+            <td><%= link_to '', tickets_destroy_path(token: ticket.token), data: { confirm: 'Vill du ta bort denna ticket?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash', disabled: true %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+
+<h2>Lästa tickets</h2>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Titel</th>
+        <th>Datum</th>
+        <th>Beskrivning</th>
+        <th>Token</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @read.each do |ticket| %>
+        <% if ticket.users.where(id: current_user).any?%>
+          <tr>
+            <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
+            <td><%= ticket.dateOfEvent.strftime('%Y-%m-%d') %></td>
+            <% if ticket.message.length > 20 %>
+              <td><%= ticket.message.first(20) + '...' %></td>
+            <% else %>
+              <td><%= ticket.message %></td>
+            <% end %>
+            <td><%= ticket.token %></td>
+            <td><%= link_to '', ticket, method: :delete, data: { confirm: 'Vill du ta bort denna ticket?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash ', disabled: true %></td>
+            <td><%#= link_to 'Show', 'tickets/' + ticket.token %></td>
+            <td><%#= link_to 'Edit', edit_ticket_path(ticket) %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

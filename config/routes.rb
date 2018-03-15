@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
   get    'ticket_search' => 'tickets#search'
   post   'comments'      => 'comments#create'
+  post 	'/tickets/destroy' => 'tickets#destroy'
+  get  'tickets/:token/mark_as_read' => 'tickets#mark_as_read', as: :mark_as_read
   
 
 end

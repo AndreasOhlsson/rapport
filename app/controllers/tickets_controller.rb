@@ -7,6 +7,8 @@ class TicketsController < ApplicationController
   # GET /tickets.json
   def index
     @tickets = Ticket.all
+    @unread = @tickets.unread_by(current_user).order("created_at desc")
+    @read = @tickets.read_by(current_user).order("created_at desc")
   end
 
   # GET /tickets/1
@@ -65,10 +67,19 @@ class TicketsController < ApplicationController
   # DELETE /tickets/1
   # DELETE /tickets/1.json
   def destroy
-    @ticket.destroy
+    @ticket.find_by(token: params[:token]).destroy
     respond_to do |format|
       format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def mark_as_read
+    @ticket = Ticket.find_by(token: params[:token])
+    @ticket.mark_as_read! :for => current_user
+    
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
     end
   end
 
