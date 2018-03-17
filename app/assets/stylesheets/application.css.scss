@@ -98,11 +98,28 @@ a:hover {
   color: #EC6A41 !important;
 }
 
+@media (max-width: 400px) {
+  #logo {
+     img {
+       max-width: 240px;
+     }
+  }
+}
+
 @media (min-width: 768px) {
   .lead {
     width: 70%;
     margin: auto;
   } 
+}
+
+.navbar-vg {
+  background-color: #fcd947;
+  border-color: #FFF;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: rgba(63,60,29,.69);
 }
 
 .check-ticket {
