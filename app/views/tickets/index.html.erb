@@ -35,9 +35,12 @@
             <% end %>
             <td><%= ticket.token %></td>
             <td>
-              <a class="btn btn-primary btn-xs" data-remote="true" href="<%= mark_as_read_path(ticket.token) %>"><span href="<%= mark_as_read_path(ticket.token) %>" class="mark-read glyphicon glyphicon-ok" data-remote="true"></span></a>
+              <a class="btn btn-primary btn-xs" data-remote="true" 
+                href="<%= mark_as_read_path(ticket.token) %>"><span href="<%= mark_as_read_path(ticket.token) %>" 
+                class="mark-read glyphicon glyphicon-ok" data-remote="true"></span>
+              </a>
             </td>
-            <td><%= link_to '', tickets_destroy_path(token: ticket.token), data: { confirm: 'Vill du ta bort denna ticket?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash', disabled: true %></td>
+            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort denna ticket?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
           </tr>
         <% end %>
       <% end %>
@@ -71,7 +74,7 @@
               <td><%= ticket.message %></td>
             <% end %>
             <td><%= ticket.token %></td>
-            <td><%= link_to '', ticket, method: :delete, data: { confirm: 'Vill du ta bort denna ticket?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash ', disabled: true %></td>
+            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort denna ticket?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
             <td><%#= link_to 'Show', 'tickets/' + ticket.token %></td>
             <td><%#= link_to 'Edit', edit_ticket_path(ticket) %></td>
           </tr>

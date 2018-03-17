@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   end
 
   root to: 'visitors#index'
-  get    'ticket_search' => 'tickets#search'
-  post   'comments'      => 'comments#create'
-  post 	'/tickets/destroy' => 'tickets#destroy'
-  get  'tickets/:token/mark_as_read' => 'tickets#mark_as_read', as: :mark_as_read
+  get   'ticket_search' => 'tickets#search'
+  post  'comments'      => 'comments#create'
+  get   'tickets/:token/destroy' => 'tickets#destroy', as: :destroy
+  post  'tickets/:token/destroy' => 'tickets#destroy'
+  get   'tickets/:token/mark_as_read' => 'tickets#mark_as_read', as: :mark_as_read
   
 
 end
