@@ -39,4 +39,8 @@ $(document).on('turbolinks:load', function () {
     language: "sv"
   });
 
+  $('#ticket-id').blur('input', function () {
+    this.value = $(this).val().trim();
+  });
+
 });
