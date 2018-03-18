@@ -20,6 +20,21 @@
 
 
 
+@font-face {
+  font-family: 'bebas-neue';
+  src: url('bebas-neue/BebasNeue-Regular.ttf') format('truetype');
+  src: url('bebas-neue/BebasNeue-Regular.otf') format('truetype');
+  /*src: url('SourceSansPro/SourceSansPro-Bold.ttf') format('truetype');
+  src: url('SourceSansPro/SourceSansPro-Italic.ttf') format('truetype');*/
+}
+
+@font-face {
+  font-family: 'minion-pro';
+  src: url('minion-pro/Minion Pro Regular.ttf') format('truetype');
+  /*src: url('minion-pro/Minion Pro Bold.ttf') format('truetype');*/
+  /*src: url('minion-pro/Minion Pro Italic.ttf') format('truetype');*/
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -52,14 +67,24 @@ a img {
 /* END RESET*/
 
 /* GLOBAL STYLES */
-
-body {
-  font-family: 'minion-pro', helvetica, arial, sans;
-  min-height: 100vh;
+html {
+  background-color: rgba(245, 245, 245, 1);
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'bebas-neue', helvetica, sans;
+
+body {
+  font-family: minion-pro, helvetica, arial, sans;
+  min-height: 100vh;
+  background-color: rgba(245, 245, 245, 1);
+}
+
+h1 {
+  font-family: bebas-neue, helvetica, sans;
+  font-weight: 100;
+}
+
+h2,h3,h4,h5,h6 {
+  font-family: minion-pro, helvetica, sans;
   font-weight: 100;
 }
 
@@ -79,6 +104,7 @@ h1 {
 p {
   line-height: 1.5;
   margin: 0.75em 0;
+  font-size: 1.2em;
  
 }
 h2 {

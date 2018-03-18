@@ -37,15 +37,16 @@ img {
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
-  background-color: #fff;
+  background-color: rgba(245, 245, 245, 1);
   padding-bottom: 80px;
   width: 100%;
   margin-top: 60px; // accommodate the navbar
-  }
+}
+
 section {
   @extend .row;
   margin-top: 20px;
-  }
+}
 
 // Styles for form views
 // using Bootstrap 3

@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function () {
 
   $(".check-hover").click(function () {
     $("#check-ticket").fadeToggle('fast');
-    $("#token").focus();
+    $("#ticket-id").focus();
   });
 
   $(".select2").select2({
