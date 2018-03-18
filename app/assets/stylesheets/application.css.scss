@@ -81,6 +81,8 @@ body {
 h1 {
   font-family: bebas-neue, helvetica, sans;
   font-weight: 100;
+  font-size: 3em;
+  margin-top: 0;
 }
 
 h2,h3,h4,h5,h6 {
@@ -93,12 +95,6 @@ h2,h3,h4,h5,h6 {
   flex: 1 1 auto;
   padding-top: 10vh;
   width: 100%;
-}
-
-
-h1 {
-  font-size: 3em;
-  margin-top: 0;
 }
 
 p {
@@ -116,6 +112,13 @@ h4 {
   color: #999;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+table {
+  font-size: 1.2em;
+  td {
+   font-size: 1.2em;
+  }
 }
 
 
