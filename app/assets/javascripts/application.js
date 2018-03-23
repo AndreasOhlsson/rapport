@@ -27,6 +27,8 @@ $(document).on('turbolinks:load', function () {
     weekStart: 1,
     zIndexOffset: 20,
     language: 'sv',
+    ignoreReadonly: true,
+    allowInputToggle: true,
   });
 
   $(".check-hover").click(function () {
