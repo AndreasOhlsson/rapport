@@ -3,21 +3,21 @@
 		<h1>Västgöta Nation Whistleblowing</h1>
 		<p class="lead">
 			Här kan du anonymt rapportera en incident som har inträffat på Västgöta Nation.
-			Vid skapandet av en ticket kommer du få ett id som du sedan kan använda för att följa upp ärendet.
+			Vid skapandet av ett nytt ärende kommer du få ett id som du sedan kan använda för att följa upp ärendet.
 		</p>
 		<br />
 		<br />
 		<div class="col-md-6 text-center">
 			<%=link_to '' , new_ticket_path,  class: "glyphicon glyphicon-upload", style: "color: #4c4c4c; font-size: 250px;" %>
-			<p style="font-size: 26px;"><%=link_to 'Skriv en ticket', new_ticket_path, style: "color: #333" %></p>
+			<p style="font-size: 26px;"><%=link_to 'Nytt ärende', new_ticket_path, style: "color: #333" %></p>
 		</div>
 		<div class="col-md-6 text-center">
 			<i class="glyphicon glyphicon-ok-circle check-hover" style="color: #4c4c4c; font-size: 250px;"></i>
-			<p class="check-hover" style="font-size: 26px">Uppföljning av ticket</p>
+			<p class="check-hover" style="font-size: 26px">Uppföljning av ärende</p>
 			<div class="form-inline" id="check-ticket" style="display: none;">
           <%= bootstrap_form_tag url: '/ticket_search', method: 'get' do |f| %>
-          <%= text_field_tag(:token, nil,  class: 'form-control', placeholder: 'Ticket-id', id: 'ticket-id') %>
-          <%= submit_tag "Hitta ticket", class: 'btn btn-primary' %>
+          <%= text_field_tag(:token, nil,  class: 'form-control', placeholder: 'Ärende-id', id: 'ticket-id') %>
+          <%= submit_tag "Hitta ärende", class: 'btn btn-primary' %>
           <% end %>
         </div>
       </div>

@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function () {
 
   $(".select2").select2({
     theme: "bootstrap",
-    language: "sv"
+    language: "sv",
   });
 
   $('#ticket-id').blur('input', function () {

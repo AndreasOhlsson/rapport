@@ -1,22 +1,21 @@
-<% provide(:title, "Rapport | Tickets") %>
+<% provide(:title, "Rapport | Ärenden") %>
 
 <p id="notice"><%= notice %></p>
 
 <% if !current_user.try(:name).nil? %>
-  <h1>Tickets till <%= current_user.try(:name) %></h1>
+  <h1>Ärenden till <%= current_user.try(:name) %></h1>
 <% else %>
-  <h1>Tickets</h1>
+  <h1>Ärenden</h1>
 <% end %>
 
-<h2>Olästa Tickets</h2>
+<h2>Olästa Ärenden</h2>
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Titel</th>
         <th>Skickat in</th>
-        <th>Beskrivning</th>
-        <th>Token</th>
+        <th>Senast kommenterad</th>
         <th>Läst?</th>
         <th>Delete</th>
       </tr>
@@ -28,19 +27,13 @@
           <tr>
             <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
             <td><%= ticket.created_at.strftime('%Y-%m-%d') %></td>
-            <% if ticket.message.length > 20 %>
-              <td><%= ticket.message.first(20) + '...' %></td>
-            <% else %>
-              <td><%= ticket.message %></td>
-            <% end %>
-            <td><%= ticket.token %></td>
             <td>
               <a class="btn btn-primary btn-xs" data-remote="true" 
                 href="<%= mark_as_read_path(ticket.token) %>"><span href="<%= mark_as_read_path(ticket.token) %>" 
                 class="mark-read glyphicon glyphicon-ok" data-remote="true"></span>
               </a>
             </td>
-            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort denna ticket?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
+            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort detta ärendet?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
           </tr>
         <% end %>
       <% end %>
@@ -49,15 +42,14 @@
 </div>
 <br>
 
-<h2>Lästa tickets</h2>
+<h2>Lästa Ärenden</h2>
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Titel</th>
         <th>Skickat in</th>
-        <th>Beskrivning</th>
-        <th>Token</th>
+        <th>Senast kommenterad</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -68,13 +60,7 @@
           <tr>
             <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
             <td><%= ticket.created_at.strftime('%Y-%m-%d') %></td>
-            <% if ticket.message.length > 20 %>
-              <td><%= ticket.message.first(20) + '...' %></td>
-            <% else %>
-              <td><%= ticket.message %></td>
-            <% end %>
-            <td><%= ticket.token %></td>
-            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort denna ticket?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
+            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort detta ärendet?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
             <td><%#= link_to 'Show', 'tickets/' + ticket.token %></td>
             <td><%#= link_to 'Edit', edit_ticket_path(ticket) %></td>
           </tr>
