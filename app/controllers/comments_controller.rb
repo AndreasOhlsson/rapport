@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = 'Ny kommentar skapad'
-      @ticket.update(updated_at: Time.now)
+      if (!if user_signed_in?)
+        @ticket.update(updated_at: Time.now)
+      end
       redirect_to ticket_url(@ticket.token)
     else
       flash[:danger] = "En kommentar får inte vara tom"
