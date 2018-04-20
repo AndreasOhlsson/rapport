@@ -2,8 +2,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<% if !current_user.try(:name).nil? %>
-  <h1>Ärenden till <%= current_user.try(:name) %></h1>
+<% if !current_user.try(:role).nil? %>
+  <h1>Ärenden till <%= current_user.try(:role) %></h1>
 <% else %>
   <h1>Ärenden</h1>
 <% end %>
@@ -23,7 +23,7 @@
 
     <tbody>
       <% @unread.each do |ticket| %>
-        <% if ticket.users.where(id: current_user).any?%>
+        <% if ticket.role == current_user.role || ticket.role == 'both' %>
           <tr>
             <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
             <td><%= ticket.created_at.strftime('%Y-%m-%d') %></td>
@@ -38,7 +38,7 @@
                 class="mark-read glyphicon glyphicon-ok" data-remote="true"></span>
               </a>
             </td>
-            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort detta ärendet?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
+            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort detta ärendet från databasen?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
           </tr>
         <% end %>
       <% end %>
@@ -61,7 +61,7 @@
 
     <tbody>
       <% @read.each do |ticket| %>
-        <% if ticket.users.where(id: current_user).any?%>
+        <% if ticket.role == current_user.role || ticket.role == 'both' %>
           <tr>
             <td><%= link_to ticket.title, 'tickets/' + ticket.token  %></td>
             <td><%= ticket.created_at.strftime('%Y-%m-%d') %></td>
@@ -70,9 +70,7 @@
             <% else %>
               <td>Inga kommentarer</td>
             <% end %>
-            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort detta ärendet?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
-            <td><%#= link_to 'Show', 'tickets/' + ticket.token %></td>
-            <td><%#= link_to 'Edit', edit_ticket_path(ticket) %></td>
+            <td><%= link_to '', destroy_path(ticket.token), data: { confirm: 'Vill du ta bort detta ärendet från databasen?' }, class: 'btn btn-danger btn-xs glyphicon glyphicon-trash' %></td>
           </tr>
         <% end %>
       <% end %>

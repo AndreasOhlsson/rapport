@@ -11,6 +11,12 @@
       <%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class="form-group">
+        <%= label :role_quratel, 'Quratelet' %>
+        <%= f.radio_button :role, 'Quratelet' %> 
+        <%= label :role_senior, 'Seniors' %>
+        <%= f.radio_button :role, 'Seniors' %>
+      </div>
+    <div class="form-group">
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
     </div>

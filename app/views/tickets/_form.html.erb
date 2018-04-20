@@ -2,8 +2,11 @@
   <%= f.text_field :title, id: :ticket_title, label: 'Titel*', required: true, maxlength: 40 %>
   <%= f.text_area :message, id: :ticket_message, style: "min-height: 100px", label: 'Beskrivning av händelsen*', required: true, maxlength: 2000 %>
   <%= f.text_field :dateOfEvent, id: :ticket_dateOfEvent, class: 'datepicker', label: 'Datum för händelsen*', required: true, readonly: true %>
-  <%= f.collection_select(:user_ids, User.all, :id, :name, {label: "Skicka till*", 
-                          selected: @ticket.users.map(&:id)}, class: "select2", multiple: true, required: true, readonly: true) %>
+  <%= f.form_group :role, label: { text: "Skicka till*" } do %>
+    <%= f.radio_button :role, :Quratelet, label: "Quratelet" %>
+    <%= f.radio_button :role, :Seniors, label: "Seniors" %>
+    <%= f.radio_button :role, :both, label: "Båda" %>
+  <% end %>
   <%= f.primary "Skicka"%>
 <% end %>
 

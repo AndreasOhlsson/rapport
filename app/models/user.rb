@@ -8,4 +8,5 @@ class User < ApplicationRecord
   acts_as_reader
   
   has_and_belongs_to_many :tickets
+  
 end

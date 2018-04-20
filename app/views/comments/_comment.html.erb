@@ -4,7 +4,11 @@
       <p><%= comment.content %></p>
       <% if comment.user_id != nil %>
         <% if !User.find(comment.user_id).nil? %>
-          <span style="color: #EC6A41"> <em>Skickat av <%= User.find(comment.user_id).name %></em></span>
+          <% if user_signed_in? %>
+            <span style="color: #EC6A41"> <em>Skickat av <%= User.find(comment.user_id).name %></em></span>
+          <% else %>
+            <span style="color: #EC6A41"> <em>Skickat av <%= User.find(comment.user_id).role %></em></span>
+          <% end %>
         <% else %>
           <span style="color: #EC6A41"> <em>Skickat av moderator </em></span>
         <% end %>

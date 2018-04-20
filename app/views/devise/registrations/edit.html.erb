@@ -12,11 +12,19 @@
       <%= f.label :email %>
       <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
       <p></p>
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label :role_quratel, 'Quratelet' %>
+        <%= f.radio_button :role, 'Quratelet' %> 
+        <%= label :role_senior, 'Seniors' %>
+        <%= f.radio_button :role, 'Seniors' %>
+      </div>
     </div>
     <fieldset>
       <p>Leave these fields blank if you don't want to change your password.</p>
