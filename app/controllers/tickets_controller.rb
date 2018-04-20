@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :new, :create, :search]
+  before_action :authenticate_user!, except: [:show, :new, :create, :search, :token]
  
 
   # GET /tickets
@@ -34,11 +34,16 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
 
-    if @ticket.save
-      flash[:info] = "Ticket skapad med id: " + @ticket.token
-      redirect_to root_path
-    else 
-      render 'new'
+    respond_to do |format|
+      if @ticket.save
+        #flash[:info] = "Ticket skapad med id: " + @ticket.token
+        #redirect_to root_path
+        format.html { redirect_to :action => 'token', :token => @ticket.token }
+        format.json { render :token, status: :created, location: @ticket }
+      else 
+        format.html { render :new }
+        format.json { render json: @ticket.errors, status: :unprocessable_entity }
+      end
     end
 
     # respond_to do |format|
@@ -50,6 +55,10 @@ class TicketsController < ApplicationController
     #     format.json { render json: @ticket.errors, status: :unprocessable_entity }
     #   end
     # end
+  end
+
+  def token
+    @ticket = Ticket.find_by(token: params[:token])
   end
 
   # PATCH/PUT /tickets/1

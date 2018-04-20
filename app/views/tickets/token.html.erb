@@ -1,0 +1,19 @@
+<h1>Ditt ärende är nu skapat</h1>
+<p>Ditt id-nummer för ärendet är:</p>
+<p><strong><%=@ticket.token%></strong></p>
+
+<p>Kopiera detta id:et och klistra in i text-rutan som uppstår när man klickar på 
+"Uppföljning av ärende"-knappen på <%= link_to 'startsidan', root_path %> 
+om du vill kunna få återkoppling på ditt ärende</p>
+
+<p>Inom kort kommer 
+
+<% if @ticket.role == 'both'%>
+  Quratelet och Seniors
+<% else %>
+  <%= @ticket.role %>
+<% end %>
+
+att svara på ditt ärende. Vidare kommer du också att kunna kommentera anonymt på det här ärendet.</p>
+
+<p><%= link_to 'Tillbaka till startsidan', root_path %></p>

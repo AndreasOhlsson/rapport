@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = 'Ny kommentar skapad'
-      if (!if user_signed_in?)
+      if (!user_signed_in?)
         @ticket.update(updated_at: Time.now)
       end
       redirect_to ticket_url(@ticket.token)

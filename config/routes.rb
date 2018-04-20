@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get   'tickets/:token/destroy' => 'tickets#destroy', as: :destroy
   post  'tickets/:token/destroy' => 'tickets#destroy'
   get   'tickets/:token/mark_as_read' => 'tickets#mark_as_read', as: :mark_as_read
+  get   'tickets/:token/token' => 'tickets#token', as: :token
   
 
 end
