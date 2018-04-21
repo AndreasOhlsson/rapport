@@ -4,6 +4,7 @@
   <p id="notice"><%= notice %></p>
   <h1><%= @ticket.title %></h1>
   <ul class="list-group">
+    
     <li class="list-group-item">
       <p>
         <strong>Datum när det inträffade:</strong>
@@ -33,10 +34,12 @@
       </p>
     </li>
     <li class="list-group-item"> 
-      <p>
-        <strong>Beskrivning:</strong>
-        <%= @ticket.message %>
-      </p>
+      <div style="word-wrap: break-word;">
+        <p>
+          <strong>Beskrivning:</strong>
+          <%= @ticket.message %>
+        </p>
+      </div>
     </li>
   </ul>
 

@@ -16,7 +16,7 @@
 			<p class="check-hover" style="font-size: 26px">Uppföljning av ärende</p>
 			<div class="form-inline" id="check-ticket" style="display: none;">
           <%= bootstrap_form_tag url: '/ticket_search', method: 'get' do |f| %>
-          <%= text_field_tag(:token, nil,  class: 'form-control', placeholder: 'Ärende-id', id: 'ticket-id') %>
+          <%= text_field_tag(:token, nil,  class: 'form-control', placeholder: 'ärende-id', id: 'ticket-id') %>
           <%= submit_tag "Hitta ärende", class: 'btn btn-primary' %>
           <% end %>
         </div>
