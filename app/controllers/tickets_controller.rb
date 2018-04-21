@@ -16,7 +16,6 @@ class TicketsController < ApplicationController
   def show
     @comments = @ticket.comments
     @comment = @ticket.comments.new
-
     @ticket.mark_as_read! for: current_user if current_user.present?
   end
 
@@ -36,8 +35,6 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        #flash[:info] = "Ticket skapad med id: " + @ticket.token
-        #redirect_to root_path
         format.html { redirect_to :action => 'token', :token => @ticket.token }
         format.json { render :token, status: :created, location: @ticket }
       else 
@@ -45,16 +42,6 @@ class TicketsController < ApplicationController
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
-
-    # respond_to do |format|
-    #   if @ticket.save
-    #     format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-    #     format.json { render :show, status: :created, location: @ticket }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @ticket.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   def token
