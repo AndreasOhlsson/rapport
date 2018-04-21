@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   def notify_new_comment(user, token)
     @ticket = Ticket.find_by(token)
     @user = user
-    mail(to: @user.email, subject: "Ny kommentar av anonym på #{@ticket.title}"" )
+    mail(to: @user.email, subject: "Ny kommentar av anonym på #{@ticket.title}" )
   end
 
 end
