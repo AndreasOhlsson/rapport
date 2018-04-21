@@ -4,10 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hej <%= @user.name %>!</h1>
+    <h3>Hej <%= @user.name %>!</h3>
     <p>
       Ett ärende som du har kommenterat på har fått en ny kommentar av anonym.
     </p>
-    <p>Klicka <%= link_to 'här', @ticket %> för att komma direkt till ärendet.
+    <p>Klicka <%= link_to 'här', 'tickets/' + @ticket.token %> för att komma direkt till ärendet.
   </body>
 </html>
