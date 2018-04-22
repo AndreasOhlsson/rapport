@@ -36,6 +36,7 @@ class TicketsController < ApplicationController
     respond_to do |format|
       if @ticket.save
 
+        # TODO optimize, use map instead of each
         if @ticket.role == 'both'
           User.all.each do |u|
             UserMailer.notify_user_new_ticket(u, @ticket.token).deliver
