@@ -35,6 +35,16 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
+        
+        if @ticket.role == 'both'
+          User.each do |u|
+            UserMailer.notify_user_new_ticket(u, @ticket.token).deliver
+          end
+        end
+        User.where(role: @ticket.role).each do |u|
+          UserMailer.notify_user_new_ticket(u, @ticket.token).deliver
+        end
+
         format.html { redirect_to :action => 'token', :token => @ticket.token }
         format.json { render :token, status: :created, location: @ticket }
       else 
