@@ -35,9 +35,9 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        
+
         if @ticket.role == 'both'
-          User.each do |u|
+          User.all.each do |u|
             UserMailer.notify_user_new_ticket(u, @ticket.token).deliver
           end
         end
