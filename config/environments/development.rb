@@ -58,4 +58,14 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.gmail.com',
+    :domain         => 'mail.google.com',
+    :port           => 587,
+    :user_name      => '< fill in your email >',
+    :password       => '< fill in your password >',
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end

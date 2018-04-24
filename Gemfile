@@ -32,6 +32,7 @@ group :development do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'devise'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'

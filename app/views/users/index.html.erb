@@ -1,0 +1,41 @@
+<div class="row">
+  <h1>Användare</h1>
+  <% if current_user.admin? %>
+    <h2>Lägg till användare</h2>
+    <%= link_to 'Lägg till ny användare', new_user_invitation_path, class: "btn btn-primary "%>
+    <br>
+    <br>
+  <% end %>
+</div>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Namn</th>
+        <th>Email</th>
+        <th>Roll</th>
+        <th>Admin</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= u.name %></td>
+          <td><%= u.email %></td>
+          <% if u.role.nil? %>
+            <td>Användaren har ej satt en roll</td>
+          <% else %>
+            <td><%= u.role %></td>
+          <% end %>
+          <% if u.admin? %>
+            <td>Ja</td>
+          <% else %>
+            <td>Nej</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>

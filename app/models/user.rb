@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
 
@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
   has_and_belongs_to_many :tickets
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   validates :email, presence: true, length: { maximum: 255 },
