@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
   resources :tickets, param: :token
+
+  devise_scope :user do
+    get "/users/sign_up", :to => redirect("/")
+  end
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   as :user do
     get "/login" => "devise/sessions#new" # custom path to login/sign_in
-  #  get "/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
-  #  get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-  #  put 'users' => 'devise/registrations#update', :as => 'user_registration'
+    #get "/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
+    #get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    #put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
   root to: 'visitors#index'

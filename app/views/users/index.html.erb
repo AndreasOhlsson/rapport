@@ -1,8 +1,10 @@
+<% provide(:title, "Rapport | Användare") %>
+
 <div class="row">
-  <h1>Användare</h1>
+  <h1>Aktiva användare</h1>
   <% if current_user.admin? %>
-    <h2>Lägg till användare</h2>
-    <%= link_to 'Lägg till ny användare', new_user_invitation_path, class: "btn btn-primary "%>
+    <br>
+    <%= link_to 'Lägg till ny användare', new_user_invitation_path, class: "btn btn-primary btn-large"%>
     <br>
     <br>
   <% end %>
@@ -19,7 +21,7 @@
     </thead>
 
     <tbody>
-      <% @users.each do |u| %>
+      <% @users.where(deactivated: false).each do |u| %>
         <tr>
           <td><%= u.name %></td>
           <td><%= u.email %></td>
