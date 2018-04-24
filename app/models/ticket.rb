@@ -9,15 +9,5 @@ class Ticket < ApplicationRecord
   has_and_belongs_to_many :users
 
   enum role: [ :Quratelet, :Seniors, :both ]
-  #validate :has_content
-  #validates_presence_of :senior, :unless => :quratel? 
-  #validates_presence_of :quratel, :unless => :senior?
-  #validates :senior, presence: { if: -> { :quratel.nil? } }
-  #validates :quratel, presence: { if: -> { :senior.nil? } }
-end
 
-def has_content
-  if self.quratel.nil? && self.senior.nil?
-    
-  end
 end

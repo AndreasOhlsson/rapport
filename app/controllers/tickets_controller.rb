@@ -92,6 +92,14 @@ class TicketsController < ApplicationController
     end
   end
 
+  def read_all
+    Ticket.mark_as_read! :all, for: current_user
+
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
+  end
+
   def search
     if params[:token].present? && Ticket.where(token: params[:token]).present?
       redirect_to ticket_path(params[:token])

@@ -8,7 +8,12 @@
   <h1>Ärenden</h1>
 <% end %>
 
-<h2>Olästa Ärenden</h2>
+<h2>Olästa Ärenden 
+  <span class="pull-right">
+    <%= link_to 'Markera alla som lästa', read_all_path, class: "btn btn-primary", remote: true,
+    data: {confirm: "Är du säker på att du vill markera alla ärenden som lästa?"} %>
+  </span>
+</h2>
 <div class="table-responsive">
   <table class="table table-hover">
     <thead>

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get   'tickets/:token/mark_as_read' => 'tickets#mark_as_read', as: :mark_as_read
   get   'tickets/:token/token' => 'tickets#token', as: :token
   get   'users' => 'users#index'
+  get   'read_all' => 'tickets#read_all'
   
 
 end
