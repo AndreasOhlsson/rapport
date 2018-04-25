@@ -23,7 +23,11 @@
     <tbody>
       <% @users.where(deactivated: false).each do |u| %>
         <tr>
-          <td><%= u.name %></td>
+          <% if u.name.nil? %>
+            <td>Användaren har ej satt ett namn</td>
+          <% else %>
+            <td><%= u.name %></td>
+          <% end %>
           <td><%= u.email %></td>
           <% if u.role.nil? %>
             <td>Användaren har ej satt en roll</td>
