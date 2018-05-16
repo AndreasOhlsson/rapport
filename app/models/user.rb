@@ -16,9 +16,9 @@ class User < ApplicationRecord
   format: { with: VALID_EMAIL_REGEX },
   uniqueness: { case_sensitive: false }
 
-  def destroy
-    update_attributes(deactivated: true) unless deactivated
-  end
+  #def destroy
+   # update_attributes(deactivated: true) unless deactivated
+  #end
 
   def active_for_authentication?
     super && !deactivated
