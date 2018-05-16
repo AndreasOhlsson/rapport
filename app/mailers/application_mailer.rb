@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noreply@vgnation.se'
+  default from: 'rapport@vgnation.se'
   layout 'mailer'
 end

@@ -36,15 +36,14 @@ class TicketsController < ApplicationController
     respond_to do |format|
       if @ticket.save
 
-        # TODO optimize, use map instead of each
         if @ticket.role == 'both'
-          User.all.each do |u|
-            UserMailer.notify_user_new_ticket(u, @ticket.token).deliver
-          end
+          users = User.where(deactivated: false)
+        else
+          users = User.where(role: @ticket.role, deactivated: false)
         end
-        User.where(role: @ticket.role).each do |u|
-          UserMailer.notify_user_new_ticket(u, @ticket.token).deliver
-        end
+        
+        emails = users.map{ |e| e.try(:email) }.reject(&:blank?)
+        UserMailer.notify_user_new_ticket(emails, @ticket.token).deliver
 
         format.html { redirect_to :action => 'token', :token => @ticket.token }
         format.json { render :token, status: :created, location: @ticket }

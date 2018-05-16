@@ -8,9 +8,11 @@ class CommentsController < ApplicationController
       flash[:success] = 'Ny kommentar skapad'
       if (!user_signed_in?)
         @ticket.update(updated_at: Time.now)
-        @ticket.comments.each do |c|
-          if !c.user_id.nil?
-            user = User.find(c.user_id)
+        comments = @ticket.comments.where.not(user_id: nil)
+        user_ids = comments.map{ |e| e.try(:user_id) }.uniq
+        user_ids.each do |id|
+          user = User.find(id)
+          if !user.deactivated
             token = @ticket.token
             # send email
             UserMailer.notify_new_comment(user, token).deliver
