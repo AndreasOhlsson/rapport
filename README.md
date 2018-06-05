@@ -63,13 +63,17 @@ $ touch .env
 Copy the text below, paste it in .env and fill in your email and password.
 
 RAILS_ENV=development
+
 MAILER_USERNAME= < your email (has to be a gmail address) >
+
 MAILER_PASSWORD= < your password >
 
 #### Set up the rails application
 
 $ bundle install
+
 $ rake db:create
+
 $ rake db:migrate
 
 #### Run the application
