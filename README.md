@@ -34,6 +34,8 @@ Make sure your development environment supports the above requirements.
 
 ### Run locally
 
+Clone down the project using git clone.
+
 #### Set up a postgreSQL database on your workspace  
 
 $ sudo service postgresql start
