@@ -1,5 +1,5 @@
 <%= bootstrap_form_for(@ticket) do |f| %>
-  <%= f.text_field :title, id: :ticket_title, label: 'Titel*', required: true, maxlength: 40 %>
+  <%= f.text_field :title, id: :ticket_title, label: 'Titel*', required: true, maxlength: 100 %>
   <%= f.text_area :message, id: :ticket_message, style: "min-height: 100px", label: 'Beskrivning av händelsen*', required: true, maxlength: 2000 %>
   <%= f.text_field :dateOfEvent, id: :ticket_dateOfEvent, class: 'datepicker', label: 'Datum för händelsen*', id: 'ticket-date', required: true, readonly: true %>
   <%= f.form_group :role, label: { text: "Skicka till*" } do %>

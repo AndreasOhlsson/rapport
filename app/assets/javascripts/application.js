@@ -45,4 +45,16 @@ $(document).on('turbolinks:load', function () {
     this.value = $(this).val().trim();
   });
 
+  $(".new-ticket-hover").hover(function () {
+    $(".new-ticket-hover").addClass('ticket-hover');
+  }, function () {
+    $(".new-ticket-hover").removeClass('ticket-hover');
+  });
+
+  $(".access-ticket-hover").hover(function () {
+    $(".access-ticket-hover").addClass('ticket-hover');
+  }, function () {
+    $(".access-ticket-hover").removeClass('ticket-hover');
+  });
+
 });

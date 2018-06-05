@@ -43,7 +43,9 @@ class TicketsController < ApplicationController
         end
         
         emails = users.map{ |e| e.try(:email) }.reject(&:blank?)
-        UserMailer.notify_user_new_ticket(emails, @ticket.token).deliver
+        if (!emails.empty?)
+          UserMailer.notify_user_new_ticket(emails, @ticket.token).deliver
+        end
 
         format.html { redirect_to :action => 'token', :token => @ticket.token }
         format.json { render :token, status: :created, location: @ticket }
@@ -103,7 +105,7 @@ class TicketsController < ApplicationController
     if params[:token].present? && Ticket.where(token: params[:token]).present?
       redirect_to ticket_path(params[:token])
     else
-      flash.now[:danger] = 'En ticket med ett sådant id existerar ej'
+      flash.now[:danger] = 'Ett ärende med detta ID existerar tyvärr ej, vänligen kontrollera så att du skrivit i korrekt! Om du skrivit i korrekt kan det vara så att ärendet ansågs vara uppklarat och arkiverat, om du anser att så inte är fallet, vänligen skapa ett nytt liknande ärende!'
       render 'visitors/index'
     end
   end

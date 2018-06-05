@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get   'tickets/:token/token' => 'tickets#token', as: :token
   get   'users' => 'users#index'
   get   'read_all' => 'tickets#read_all'
-  
+
+  match "*path" => "visitors#index", via: [:get, :post]   
 
 end

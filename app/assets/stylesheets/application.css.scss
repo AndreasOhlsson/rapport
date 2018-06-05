@@ -165,7 +165,7 @@ a:hover {
 
 .navbar-vg {
   background-color: #fcd947;
-  border-color: #FFF;
+  border-color: whitesmoke;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -180,8 +180,11 @@ a:hover {
   cursor: pointer;
 }
 
-.check-hover:hover {
+
+.ticket-hover {
   color: #EC6A41 !important;
+  text-decoration: none;
+  border-width: 5px;
 }
 
 #ticket-date {
