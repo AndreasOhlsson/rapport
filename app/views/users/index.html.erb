@@ -21,7 +21,7 @@
     </thead>
 
     <tbody>
-      <% @users.where(deactivated: false).each do |u| %>
+      <% @activated_users.each do |u| %>
         <tr>
           <% if u.name.nil? %>
             <td>Användaren har ej satt ett namn</td>
@@ -44,4 +44,51 @@
     </tbody>
   </table>
 </div>
+
+<% if current_user.admin? && @deactivated_users.count > 0 %>
+  <div class="row">
+    <h1>Inaktiva användare</h1>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Namn</th>
+          <th>Email</th>
+          <th>Roll</th>
+          <th>Admin</th>
+          <th style="text-align: center">Aktivera?</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @deactivated_users.each do |u| %>
+          <tr>
+            <% if u.name.nil? %>
+              <td>Användaren har ej satt ett namn</td>
+            <% else %>
+              <td><%= u.name %></td>
+            <% end %>
+            <td><%= u.email %></td>
+            <% if u.role.nil? %>
+              <td>Användaren har ej satt en roll</td>
+            <% else %>
+              <td><%= u.role %></td>
+            <% end %>
+            <% if u.admin? %>
+              <td>Ja</td>
+            <% else %>
+              <td>Nej</td>
+            <% end %>
+            <td style="text-align: center">
+              <%= link_to '', activate_user_path(u.id), data: { confirm: 'Vill du aktivera denna användaren igen?' }, 
+              class: 'btn btn-primary btn-xs glyphicon glyphicon-plus' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
 <br>
