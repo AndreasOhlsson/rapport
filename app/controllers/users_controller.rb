@@ -14,4 +14,11 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def deactivate_user
+    @user = User.find(params[:id])
+    @user.update(deactivated: true)
+
+    redirect_to users_url
+  end
+
 end

@@ -17,6 +17,9 @@
         <th>Email</th>
         <th>Roll</th>
         <th>Admin</th>
+        <% if current_user.admin? %>
+          <th style="text-align: center">Inaktivera?</th>
+        <% end %>
       </tr>
     </thead>
 
@@ -38,6 +41,14 @@
             <td>Ja</td>
           <% else %>
             <td>Nej</td>
+          <% end %>
+          <% if current_user.admin? %>
+            <td style="text-align: center">
+              <% if !u.admin? %>
+                <%= link_to '', deactivate_user_path(u.id), data: { confirm: 'Vill du inaktivera denna användaren?' }, 
+                class: 'btn btn-primary btn-xs glyphicon glyphicon-minus' %>
+              <% end %>
+            </td>
           <% end %>
         </tr>
       <% end %>

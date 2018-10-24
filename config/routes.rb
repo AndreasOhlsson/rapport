@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get   'users' => 'users#index'
   get   'read_all' => 'tickets#read_all'
   get   'activate_user/:id' => 'users#activate_user', as: :activate_user
+  get   'deactivate_user/:id' => 'users#deactivate_user', as: :deactivate_user
 
   match "*path" => "visitors#index", via: [:get, :post]   
 
